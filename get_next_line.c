@@ -6,33 +6,29 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:32:36 by ehossain          #+#    #+#             */
-/*   Updated: 2025/01/01 18:32:15 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/01/01 19:34:53 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-// int	main(int ac, char **av)
-// {
-// 	int		fd;
-// 	char	*next_line;
-//
-// 	(void)ac;
-// 	fd = 0;
-// 	next_line = NULL;
-// 	if (!next_line)
-// 		return (0);
-// 	fd = open(av[1], O_RDONLY);
-// 	while (next_line != NULL)
-// 	{
-// 		next_line = get_next_line(fd);
-// 		printf("get_next_line = %s\n", next_line);
-// 		free(next_line);
-// 	}
-// 	free(next_line);
-// 	fd = close(fd);
-// 	return (0);
-// }
+int	main(void)
+{
+	int		fd;
+	char	*next_line;
+
+	fd = 0;
+	fd = open("hello.txt", O_RDONLY);
+	while (next_line != NULL)
+	{
+		next_line = get_next_line(fd);
+		printf("get_next_line = %s\n", next_line);
+		free(next_line);
+	}
+	free(next_line);
+	fd = close(fd);
+	return (0);
+}
 
 char	*get_next_line(int fd)
 {
@@ -40,9 +36,8 @@ char	*get_next_line(int fd)
 	char		*new_line;
 
 	new_line = NULL;
-	 read_file = ft_calloc(1, 1);
-	 if (!read_file)
-	 	return (NULL);
+	// if (!read_file)
+	// 	return (NULL);
 	if (fd == -1 || BUFFER_SIZE <= 0)
 	{
 		free(read_file);
@@ -67,7 +62,7 @@ char	*ft_read_file(int fd, char *buffer)
 	char	*tmp_buffer;
 
 	read_bytes = 1;
-	buffer = ft_calloc(1, 1);
+	// buffer = ft_calloc(1, sizeof(char));
 	tmp_buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!tmp_buffer)
 		return (NULL);

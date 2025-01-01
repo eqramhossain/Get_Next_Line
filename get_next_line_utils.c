@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:44:03 by ehossain          #+#    #+#             */
-/*   Updated: 2025/01/01 18:25:59 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/01/01 19:39:41 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ char	*ft_str_free_join(char *str1, char *str2)
 	tmp_buffer = ft_strjoin(str1, str2);
 	if (!tmp_buffer)
 	{
-		return (NULL);
 		free(str1);
 		str1 = NULL;
+		return (NULL);
 	}
 	free(str1);
 	str1 = NULL;

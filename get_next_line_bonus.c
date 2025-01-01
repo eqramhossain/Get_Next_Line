@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 09:42:39 by ehossain          #+#    #+#             */
-/*   Updated: 2025/01/01 18:27:56 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/01/01 19:26:49 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	line = NULL;
-	buffer[fd] = ft_calloc(1, 1);
 	if (!buffer[fd])
 		return (NULL);
 	if (fd == -1 || BUFFER_SIZE <= -1 || fd > 1024)
