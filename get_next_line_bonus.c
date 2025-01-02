@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 09:42:39 by ehossain          #+#    #+#             */
-/*   Updated: 2025/01/01 19:26:49 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:17:04 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	line = NULL;
-	if (!buffer[fd])
-		return (NULL);
+	// if (!buffer[fd])
+	// 	return (NULL);
 	if (fd == -1 || BUFFER_SIZE <= -1 || fd > 1024)
 	{
 		free(buffer[fd]);
@@ -89,6 +89,8 @@ char	*ft_read_file(int fd, char *buffer)
 	char	*tmp_buffer;
 
 	read_bytes = 1;
+	if (!buffer)
+		buffer = ft_calloc(1, sizeof(char));
 	tmp_buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!tmp_buffer)
 		return (NULL);
