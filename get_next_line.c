@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:32:36 by ehossain          #+#    #+#             */
-/*   Updated: 2025/01/02 11:37:34 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/01/02 19:41:00 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 // 		free(next_line);
 // 		next_line = get_next_line(fd);
 // 		printf("get_next_line = %s\n", next_line);
-// 		//free(next_line);
 // 	}
 // 	free(next_line);
 // 	fd = close(fd);
@@ -72,9 +71,7 @@ char	*ft_read_file(int fd, char *buffer)
 		read_bytes = read(fd, tmp_buffer, BUFFER_SIZE);
 		if (read_bytes == -1)
 		{
-			free(buffer);
-			free(tmp_buffer);
-			return (NULL);
+			return (free(buffer), free(tmp_buffer), NULL);
 		}
 		tmp_buffer[read_bytes] = '\0';
 		buffer = ft_str_free_join(buffer, tmp_buffer);

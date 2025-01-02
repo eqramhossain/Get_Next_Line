@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 09:42:39 by ehossain          #+#    #+#             */
-/*   Updated: 2025/01/02 11:17:04 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/01/02 20:07:53 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // 	int		i;
 //
 // 	i = 0;
-// 	get_line = "";
+// 	get_line = ft_calloc(1, sizeof(char));
 // 	fd[0] = open("test1.txt", O_RDONLY);
 // 	printf("fd = [%d]\n", fd[0]);
 // 	fd[1] = open("test2.txt", O_RDONLY);
@@ -32,21 +32,19 @@
 // 	printf("fd = [%d]\n", fd[4]);
 // 	while (i != 5)
 // 	{
-// 		get_line = get_next_line(fd[0]);
-// 		printf("get_line = %s\n", get_line);
-// 		printf("fd = [%d]\n", fd[0]);
-// 		get_line = get_next_line(fd[1]);
-// 		printf("get_line = %s\n", get_line);
-// 		printf("fd = [%d]\n", fd[1]);
-// 		get_line = get_next_line(fd[2]);
-// 		printf("get_line = %s\n", get_line);
-// 		printf("fd = [%d]\n", fd[2]);
-// 		get_line = get_next_line(fd[3]);
-// 		printf("get_line = %s\n", get_line);
-// 		printf("fd = [%d]\n", fd[3]);
-// 		get_line = get_next_line(fd[4]);
-// 		printf("get_line = %s\n", get_line);
-// 		printf("fd = [%d]\n", fd[4]);
+// 		if (get_line != NULL)
+// 		{
+// 			get_line = get_next_line(fd[0]);
+// 			printf("get_line = %s", get_line);
+// 			get_line = get_next_line(fd[1]);
+// 			printf("get_line = %s", get_line);
+// 			get_line = get_next_line(fd[2]);
+// 			printf("get_line = %s", get_line);
+// 			get_line = get_next_line(fd[3]);
+// 			printf("get_line = %s", get_line);
+// 			get_line = get_next_line(fd[4]);
+// 			printf("get_line = %s", get_line);
+// 		}
 // 		i++;
 // 	}
 // 	for (int i = 0; i < 5; i++)
@@ -62,8 +60,6 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	line = NULL;
-	// if (!buffer[fd])
-	// 	return (NULL);
 	if (fd == -1 || BUFFER_SIZE <= -1 || fd > 1024)
 	{
 		free(buffer[fd]);
@@ -99,9 +95,7 @@ char	*ft_read_file(int fd, char *buffer)
 		read_bytes = read(fd, tmp_buffer, BUFFER_SIZE);
 		if (read_bytes == -1)
 		{
-			free(buffer);
-			free(tmp_buffer);
-			return (NULL);
+			return (free(buffer), free(tmp_buffer), NULL);
 		}
 		tmp_buffer[read_bytes] = '\0';
 		buffer = ft_str_free_join(buffer, tmp_buffer);
@@ -111,7 +105,7 @@ char	*ft_read_file(int fd, char *buffer)
 			break ;
 	}
 	free(tmp_buffer);
-	return (buffer);
+	return (tmp_buffer = NULL, buffer);
 }
 
 char	*ft_set_next_line(char *buffer)
