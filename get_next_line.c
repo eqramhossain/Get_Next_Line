@@ -6,7 +6,7 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:32:36 by ehossain          #+#    #+#             */
-/*   Updated: 2025/01/02 11:07:14 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:37:34 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // 	char	*next_line;
 //
 // 	fd = 0;
-// 	fd = open("hello.txt", O_RDONLY);
+// 	fd = open("one_million.txt", O_RDONLY);
 // 	next_line = ft_calloc(1, sizeof(char));
 // 	while (next_line != NULL)
 // 	{
