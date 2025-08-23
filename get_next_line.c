@@ -6,30 +6,31 @@
 /*   By: ehossain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:32:36 by ehossain          #+#    #+#             */
-/*   Updated: 2025/01/02 19:41:00 by ehossain         ###   ########.fr       */
+/*   Updated: 2025/08/14 12:32:29 by ehossain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*next_line;
-//
-// 	fd = 0;
-// 	fd = open("one_million.txt", O_RDONLY);
-// 	next_line = ft_calloc(1, sizeof(char));
-// 	while (next_line != NULL)
-// 	{
-// 		free(next_line);
-// 		next_line = get_next_line(fd);
-// 		printf("get_next_line = %s\n", next_line);
-// 	}
-// 	free(next_line);
-// 	fd = close(fd);
-// 	return (0);
-// }
+int	main(int ac, char **av)
+{
+	int		fd;
+	char	*next_line;
+
+	(void)ac;
+	fd = 0;
+	fd = open(av[1], O_RDONLY);
+	next_line = ft_calloc(1, sizeof(char));
+	while (next_line != NULL)
+	{
+		free(next_line);
+		next_line = get_next_line(fd);
+		printf("%s", next_line);
+	}
+	free(next_line);
+	fd = close(fd);
+	return (0);
+}
 
 char	*get_next_line(int fd)
 {
@@ -38,18 +39,10 @@ char	*get_next_line(int fd)
 
 	new_line = NULL;
 	if (fd == -1 || BUFFER_SIZE <= 0)
-	{
-		free(read_file);
-		free(new_line);
 		return (NULL);
-	}
 	read_file = ft_read_file(fd, read_file);
 	if (!read_file)
-	{
-		free(read_file);
-		free(new_line);
 		return (NULL);
-	}
 	new_line = ft_set_line(read_file);
 	read_file = ft_set_remaining(read_file);
 	return (new_line);
